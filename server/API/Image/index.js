@@ -1,5 +1,5 @@
 //Libraries
-//require('dotenv').config();
+require('dotenv').config();
 import express from "express";
 import AWS from "aws-sdk";
 import multer from "multer";
@@ -31,7 +31,7 @@ Router.post("/", upload.single("file") ,async(req,res)=> {
             //S3 bucket options
             const bucketOptions = 
             {
-                Bucket: "shapeaijulybatch123",
+                Bucket: "zomato-clone-bucket",
                 Key: file.originalname,
                 Body: file.buffer,
                 ContentType: file.mimetype,
