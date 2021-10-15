@@ -1,5 +1,5 @@
 import express from "express";
-import {RestaurantModel} from "../../database/allModels";
+import RestaurantModel from "../../database/allModels";
 
 //Validation
 import {ValidateRestaurantCity, ValidateRestaurantSearchString} from "../../validation/restaurant";
@@ -61,7 +61,7 @@ Body             searchString
 Access           Public
 Method           GET
 */
-/*xxxxyyyyyaaaabbbbb*/
+
 Router.get("/search", async(req,res)=> {
     try {
 

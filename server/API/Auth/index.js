@@ -1,12 +1,12 @@
 import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-// import passport from "passport";
+import passport from "passport";
 
 const Router = express.Router();
 
 //Models
-import { UserModel } from "../../database/user";
+import UserModel from "../../database/user";
 
 //Validation
 // import { ValidateSignup, ValidateSignin } from "../../validation/auth";
@@ -20,8 +20,7 @@ Method        POST
 */
 
 Router.post("/signup", async(req,res) => {
-    try 
-    {
+    try {
         await UserModel.findByEmailAndPhone(req.body.credentials);
 
         //DB
@@ -32,8 +31,7 @@ Router.post("/signup", async(req,res) => {
 
         return res.status(200).json({ token, status: "Succes"});
     } 
-    catch (error) 
-    {
+    catch (error) {
         return res.status(500).json({error: error.message});
     }
 });
@@ -48,23 +46,17 @@ Method        POST
 */
 
 Router.post("/signin", async(req,res) => {
-    try 
-    {
-        await ValidateSignin(req.body.credentials);
-
+    try {
         const user = await UserModel.findByEmailAndPassword(req.body.credentials);
 
-        //JWT Auth Token
+        //generate JWT auth token
         const token = user.generateJwtToken();
 
-        return res.status(200).json({token, status: "Success"});
-
+        return res.status(200).json({ token, status: "Succes"});
     } 
-    catch (error) 
-    {
+    catch (error) {
         return res.status(500).json({error: error.message});
     }
-
 });
 
 
@@ -76,13 +68,13 @@ Access        Public
 Method        GET
 */
 
-// Router.get("/google", passport.authenticate("google",{
-//     scope: [
-//         "https://www.googleapis.com/auth/userinfo.profile",
-//         "https://www.googleapis.com/auth/userinfo.email"
-//         ],
-//     })
-// );
+Router.get("/google", passport.authenticate("google",{
+    scope: [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
+        ],
+    })
+);
 
 /*
 Route         /google/callback
@@ -92,10 +84,10 @@ Access        Public
 Method        GET
 */
 
-// Router.get("/google/callback", passport.authenticate("google",{failureRedirect: "/"}),
-//     (req,res) => {
-//         return res.json({token: req.session.passport.user.token});
-//     }
-// );
+Router.get("/google/callback", passport.authenticate("google",{failureRedirect: "/"}),
+    (req,res) => {
+        return res.json({token: req.session.passport.user.token});
+    }
+);
 
 export default Router;
