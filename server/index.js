@@ -9,6 +9,7 @@ import passport from "passport";
 
 //config
 import googleAuthConfig from "./config/google.config";
+import routeConfig from "./config/route.config";
 
 //API
 import Auth from "./API/Auth";
@@ -30,11 +31,12 @@ zomato.use(express.json());
 zomato.use(express.urlencoded({extended:false}));
 zomato.use(cors());
 zomato.use(helmet());
-// zomato.use(passport.initialize());
-// zomato.use(passport.session());
+zomato.use(passport.initialize());
+zomato.use(passport.session());
 
 //passport configuration
 googleAuthConfig(passport);
+routeConfig(passport);
 
 //Application route
 zomato.use("/auth", Auth);
