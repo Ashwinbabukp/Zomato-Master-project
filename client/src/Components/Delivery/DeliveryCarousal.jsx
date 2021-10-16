@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {RiSearch2Line} from "react-icons/ri"
 
 // components
 import DeliveryCatagory from "./DeliveryCatagory";
@@ -49,7 +50,15 @@ const DeliveryCarousal = () => {
 
   return (
     <>
-      <h1 className="text-xl mb-4 font-semibold">
+      <div className="flex w-full items-center gap-2 md:hidden">
+        <RiSearch2Line />
+        <input
+          type="search"
+          placeholder="Search for restaurant, cuisine or a dish"
+          className="w-full focus:outline-none"
+        />
+      </div>
+      <h1 className="text-xl mb-4 mt-5 font-semibold">
         Inspiration for your first order
       </h1>
       <div className="flex gap-4 md:gap-5 lg:gap-y-10 grid-cols-4 flex-wrap">

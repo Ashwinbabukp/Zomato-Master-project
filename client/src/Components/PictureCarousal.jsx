@@ -4,7 +4,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 const PictureCarousalCard = () => {
   return (
     <>
-      <div className="w-64 h-48 ">
+      <div className="w-64 h-48 flex justify-center">
         <div className="w-full h-full relative">
           <img
             src="https://b.zmtcdn.com/data/pictures/2/18503752/a1cd82498e16a143ecda57f57cb353b3.jpg?output-format=webp"

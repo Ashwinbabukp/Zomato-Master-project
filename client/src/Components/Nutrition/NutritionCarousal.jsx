@@ -1,8 +1,8 @@
 import React from "react";
-import Slider from "react-slick";
+// import Slider from "react-slick";
 
 import NutritionCarousalCard from "./NutritionCarousalCard";
-import { NextArrow, PrevArrow } from "../CarousalArrow";
+// import { NextArrow, PrevArrow } from "../CarousalArrow";
 
 const NutritionCarousal = () => {
   const categories = [
@@ -37,29 +37,23 @@ const NutritionCarousal = () => {
       title: "Immunity & Bones",
     },
   ];
-  const settings = {
-    arrows: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-  };
+  // const settings = {
+  //   arrows: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 1,
+  //   nextArrow: <NextArrow />,
+  //   prevArrow: <PrevArrow />,
+  // };
   return (
     <>
-      <div className="lg:hidden flex gap-3 lg:gap-0 flex-wrap justify-between">
-        {categories.map((food) => (
-          <NutritionCarousalCard {...food} />
-        ))}
-      </div>
-
-      <div className="hidden  lg:block">
-        <Slider {...settings}>
+      <div className="lg:block flex gap-3 lg:gap-0 flex-wrap justify-between">
+        {/* <Slider {...settings}> */}
           {categories.map((food) => (
             <NutritionCarousalCard {...food} />
           ))}
-        </Slider>
+        {/* </Slider> */}
       </div>
     </>
   );
